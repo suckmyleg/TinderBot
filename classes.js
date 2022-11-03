@@ -1,6 +1,6 @@
 class Chat{
     load_local_data(){
-        this.saved_data = localStorage.getItem(JSON.parse(this.chat_local_storage_id));
+        this.saved_data = get_data(this.local_storage_id);
 
         if (this.saved_data == undefined) {
             this.saved_data = {
@@ -13,30 +13,40 @@ class Chat{
         else{
             console.log("Loaded data");
         }
-        console.log(this.saved_data.messages);
+        console.log(this.saved_data);
     }
     
     save_local_data(){
         console.log("Saving data");
 
-        localStorage.setItem(this.chat_local_storage_id, JSON.stringify(this.saved_data)); 
+        save_data_local(this.saved_data, this.local_storage_id) 
     }
 
     constructor(){
         this.default_url = "https://tinder.com/app/messages/";
         this.full_url = window.location.href;
         this.profile_id = this.full_url.replace(this.default_url, "");
-        this.chat_id = "SC.chat_"+this.profile_id;
-        this.chat_local_storage_id = "loca_data_chat_"+this.chat_id;
-        this.chat_element = document.getElementById(this.chat_id);
-
-        localStorage.removeItem(this.chat_local_storage_id);
+        this.id = "SC.chat_"+this.profile_id;
+        this.local_storage_id = "chat_"+this.id;
+        this.element = document.getElementById(this.id);
 
         this.load_local_data();
     }
 
     get_messages_on_screen(){
-        return [];
+        var elements = this.chat_element.getElementsByClassName("div");
+        
+        var messages = [];
+
+        for (var element in elements){
+            message = {"date":0, "content":0, "user":0};
+
+            console.log(element);
+
+            messages.push(message);
+        }
+
+        return messages;
     }
 
     get_new_messages(){
