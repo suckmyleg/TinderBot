@@ -1,10 +1,28 @@
 function get_likes_images(){
-    
+    var urls = [];
+
+    setupLikesImages(urls);
 }
 
+function setupLikesImages(urls){
+    for (var url in urls){
+        var element = fromUrlToElement(url);
+        if (!LIKES_ELEMENTS.includes(element)) LIKES_ELEMENTS.push(element);
+    }
+}
 
-function blur_image(){
+function getUrlFromImageBackground(element){
+    return "";
+}
 
+function blurElement(element){
+    element.style.filter = 'blur(3px)';
+}
+
+function fromUrlToElement(url){
+    var a = new Image();
+    a.src = url;
+    return a;
 }
 
 function checkIdenticalImages(baseElement, element2){
@@ -24,7 +42,11 @@ function checkImageInLikes(element){
 function checkActualInLikes(){
     var element = document.getElementById("");
 
-    return checkActualInLikes(element);
+    var url = getUrlFromImageBackground(element);
+
+    var elementImage = fromUrlToElement(url); 
+
+    return checkActualInLikes(elementImage);
 }
 
 //checkIdenticalImages();
