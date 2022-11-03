@@ -15,6 +15,10 @@ function loaded(){
 }
 
 window.onload = function (){
-    loaded();
-    main_messaging();
+    setTimeout(() =>
+    {
+        loaded();
+        get_likes_images();
+        main_messaging();
+    }, 7000);
 }

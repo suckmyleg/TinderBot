@@ -38,7 +38,8 @@ class Chat{
         
         var messages = [];
 
-        for (var element in elements){
+        for (var i in elements){
+            var element = elements[i];
             message = {"date":0, "content":0, "user":0};
 
             console.log(element);
