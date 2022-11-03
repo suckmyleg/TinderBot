@@ -19,7 +19,7 @@
         {
             "matches":["https://tinder.com/*"],
             "css":["main.css"],
-            "js":["main.js"]
+            "js":["classes.js", "LOCAL_VARIABLES.js", "chatting.js", "main.js"]
         }
     ]
 }
