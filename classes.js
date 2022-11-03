@@ -1,12 +1,12 @@
 class Chat{
     load_local_data(){
-        this.saved_data = localStorage.getItem(this.chat_local_storage_id);
+        this.saved_data = localStorage.getItem(JSON.parse(this.chat_local_storage_id));
 
         if (this.saved_data == undefined) {
             this.saved_data = {
-                messages:[],
-                interests:[],
-                gender:0
+                "messages":[],
+                "interests":[],
+                "gender":0
             };
             console.log("Created new chat data");
         }
@@ -19,7 +19,7 @@ class Chat{
     save_local_data(){
         console.log("Saving data");
 
-        localStorage.setItem(this.chat_local_storage_id, this.saved_data); 
+        localStorage.setItem(this.chat_local_storage_id, JSON.stringify(this.saved_data)); 
     }
 
     constructor(){
@@ -30,7 +30,7 @@ class Chat{
         this.chat_local_storage_id = "loca_data_chat_"+this.chat_id;
         this.chat_element = document.getElementById(this.chat_id);
 
-        //localStorage.removeItem(this.chat_local_storage_id);
+        localStorage.removeItem(this.chat_local_storage_id);
 
         this.load_local_data();
     }
