@@ -21,5 +21,8 @@
             "css":["main.css"],
             "js":["classes.js", "LOCAL_VARIABLES.js", "chatting.js", "main.js"]
         }
+    ],
+    "permissions": [
+        "storage"
     ]
 }

@@ -11,7 +11,7 @@ function chatting(chat){
         chat.run();
         setTimeout(() => {
             chatting(chat);
-        }, 500);
+        }, 2000);
     }
     else
     {

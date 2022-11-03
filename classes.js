@@ -1,14 +1,25 @@
 class Chat{
     load_local_data(){
-        this.saved_data = {
-            "messages":[],
-            "interests":[],
-            "gender":0
-        };
+        this.saved_data = localStorage.getItem(this.chat_local_storage_id);
+
+        if (this.saved_data == undefined) {
+            this.saved_data = {
+                messages:[],
+                interests:[],
+                gender:0
+            };
+            console.log("Created new chat data");
+        }
+        else{
+            console.log("Loaded data");
+        }
+        console.log(this.saved_data.messages);
     }
     
     save_local_data(){
         console.log("Saving data");
+
+        localStorage.setItem(this.chat_local_storage_id, this.saved_data); 
     }
 
     constructor(){
@@ -16,7 +27,10 @@ class Chat{
         this.full_url = window.location.href;
         this.profile_id = this.full_url.replace(this.default_url, "");
         this.chat_id = "SC.chat_"+this.profile_id;
+        this.chat_local_storage_id = "loca_data_chat_"+this.chat_id;
         this.chat_element = document.getElementById(this.chat_id);
+
+        //localStorage.removeItem(this.chat_local_storage_id);
 
         this.load_local_data();
     }
