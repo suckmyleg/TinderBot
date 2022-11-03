@@ -1,0 +1,25 @@
+{
+    "manifest_version":2,
+    "name": "TinderBot",
+    "description":"A bot that covers tinder chats and more",
+    "version": "1.0",
+    "icons":{
+        "16":"/Icons/16.png",
+        "48":"/Icons/48.png",
+        "128":"/Icons/128.png"
+    },
+    "page_action":{
+        "default_icon":{
+            "16":"/Icons/16.png",
+            "48":"/Icons/48.png",
+            "128":"/Icons/128.png"
+        }
+    },
+    "content_scripts":[
+        {
+            "matches":["https://tinder.com/*"],
+            "css":["main.css"],
+            "js":["main.js"]
+        }
+    ]
+}
